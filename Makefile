@@ -6,13 +6,13 @@
 #    By: khelegbe <khelegbe@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/26 14:12:05 by khelegbe          #+#    #+#              #
-#    Updated: 2021/05/27 16:14:28 by khelegbe         ###   ########.fr        #
+#    Updated: 2021/06/22 15:49:52 by khelegbe         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC			=	clang
 
-FLAGS		=	-Wall -Wextra -Werror
+FLAGS		=	-Wall -Wextra -Werror -g
 
 NAME		=	push_swap
 
@@ -35,12 +35,12 @@ all:			$(NAME)
 
 $(NAME) :		${OBJECTS}
 				@make -C libft
-				@${CC} ${OBJECTS} ${HEADERS} ${LIB} ${LIBFT} -o ${NAME}
+				@${CC} ${FLAGS} ${OBJECTS} ${HEADERS} ${LIB} ${LIBFT} -o ${NAME}
 				@printf "\033[92mpush_swap compiled\n\033[0m"
 
 debug:			$(NAME)
-				./${NAME} 12 35 45
-				@rm -rf $(NAME)
+				./${NAME} "12 35 35 45"
+				# @rm -rf $(NAME)
 
 clean:
 				@make clean -C ${LIBFT_PATH}

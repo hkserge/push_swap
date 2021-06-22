@@ -6,7 +6,7 @@
 /*   By: khelegbe <khelegbe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/26 14:37:51 by khelegbe          #+#    #+#             */
-/*   Updated: 2021/05/27 15:51:26 by khelegbe         ###   ########.fr       */
+/*   Updated: 2021/06/22 15:49:50 by khelegbe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,28 @@ void	display_list(t_list *list)
 	}
 }
 
+int		check_number(char *num)
+{
+	int		i;
+	int		j;
+
+	i = 0;
+	j = 1;
+	while (num[i])
+	{
+		while (num[j])
+		{
+			if (num[i] != num[j])
+				j++;
+			else
+				return (1);
+		}
+		i++;
+		j = i + 1;
+	}
+	return (0);
+}
+
 int	main(int argc, char *argv[])
 {
 	t_list		*stack_a;
@@ -39,7 +61,8 @@ int	main(int argc, char *argv[])
 	stack_a = NULL;
 	number_args = argv + 1;
 	i = 1;
-	// CHECKER DOUBLONS
+	printf("\n%d\n", check_number(argv[1]));
+
 	// CHECKER NUMERIQUES VALABLES UNIQUEMENT
 	while (i < argc)
 	{
@@ -54,4 +77,5 @@ int	main(int argc, char *argv[])
 	}
 	display_list(stack_a);
 	ft_lstclear(&stack_a, free);
+	return (0);
 }
